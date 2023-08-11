@@ -178,7 +178,7 @@ export interface CalendarHeaderProps<DateType> {
   onChange: (date: DateType, source: SelectInfo['source']) => void;
   onModeChange: (mode: CalendarMode) => void;
   getYearLabel?: (oriLabel: string, year: number) => string;
-  getMonthLabel?: (oriLabel: string, month: number) => string;
+  getMonthLabel?: (oriLabel: string, month: number, value: DateType) => string;
 }
 function CalendarHeader<DateType>(props: CalendarHeaderProps<DateType>) {
   const { prefixCls, fullscreen, mode, onChange, onModeChange } = props;
