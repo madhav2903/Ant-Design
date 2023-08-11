@@ -21,6 +21,7 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*-p-wQLik200AAA
 <code src="./demo/card.tsx" clientOnly>卡片模式</code>
 <code src="./demo/select.tsx" clientOnly>选择功能</code>
 <code src="./demo/customize-header.tsx" clientOnly>自定义头部</code>
+<code src="./demo/lunar.tsx" clientOnly>展示农历、节气</code>
 <code src="./demo/component-token.tsx" debug>组件 Token</code>
 
 ## API
@@ -59,6 +60,8 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*-p-wQLik200AAA
 | fullCellRender | 自定义单元格的内容 | function(current: dayjs, today: dayjs, info: { originNode: React.ReactElement,today: DateType, range?: 'start' \| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \| 'minute' \| 'second' \| 'meridiem' }) => React.ReactNode | - | 5.4.0 |
 | validRange | 设置可以显示的日期 | \[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - |  |
 | value | 展示日期 | [dayjs](https://day.js.org/) | - |  |
+| getYearLabel | 自定义年份选择框 label 内容 | (oriLabel: string, year: number) => string | - | v5.9.0 |
+| getMonthLabel | 自定义月份选择框 label 内容 | (oriLabel: string, month: number, value: DateType) => string | - | v5.9.0 |
 | onChange | 日期变化回调 | function(date: Dayjs) | - |  |
 | onPanelChange | 日期面板变化回调 | function(date: Dayjs, mode: string) | - |  |
 | onSelect | 选择日期回调，包含来源信息 | function(date: Dayjs, info: { source: 'year' \| 'month' \| 'date' \| 'customize' }) | - | `info`: 5.6.0 |

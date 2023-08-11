@@ -20,6 +20,7 @@ When data is in the form of dates, such as schedules, timetables, prices calenda
 <code src="./demo/card.tsx" clientOnly>Card</code>
 <code src="./demo/select.tsx" clientOnly>Selectable Calendar</code>
 <code src="./demo/customize-header.tsx" clientOnly>Customize Header</code>
+<code src="./demo/lunar.tsx" clientOnly>Display lunar calendar, solar terms</code>
 <code src="./demo/component-token.tsx" debug>Component Token</code>
 
 ## API
@@ -54,6 +55,8 @@ When data is in the form of dates, such as schedules, timetables, prices calenda
 | monthFullCellRender | Customize the display of the month cell, the returned content will override the cell | function(date: Dayjs): ReactNode | - |  |
 | validRange | To set valid range | \[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - |  |
 | value | The current selected date | [dayjs](https://day.js.org/) | - |  |
+| getYearLabel | Customize the label of year select | (oriLabel: string, year: number) => string | - | v5.9.0 |
+| getMonthLabel | Customize the label of month select | (oriLabel: string, month: number, value: DateType) => string | - | v5.9.0 |
 | onChange | Callback for when date changes | function(date: Dayjs) | - |  |
 | onPanelChange | Callback for when panel changes | function(date: Dayjs, mode: string) | - |  |
 | onSelect | Callback for when a date is selected, include source info | function(date: Dayjs, info: { source: 'year' \| 'month' \| 'date' \| 'customize' }) | - | `info`: 5.6.0 |

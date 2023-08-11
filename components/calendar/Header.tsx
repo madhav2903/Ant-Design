@@ -19,11 +19,21 @@ interface SharedProps<DateType> {
   fullscreen: boolean;
   divRef: React.RefObject<HTMLDivElement>;
   onChange: (year: DateType) => void;
+  getYearLabel?: (oriLabel: string, year: number) => string;
 }
 
 function YearSelect<DateType>(props: SharedProps<DateType>) {
-  const { fullscreen, validRange, generateConfig, locale, prefixCls, value, onChange, divRef } =
-    props;
+  const {
+    fullscreen,
+    validRange,
+    generateConfig,
+    locale,
+    prefixCls,
+    value,
+    onChange,
+    divRef,
+    getYearLabel,
+  } = props;
 
   const year = generateConfig.getYear(value || generateConfig.getNow());
 
@@ -38,7 +48,11 @@ function YearSelect<DateType>(props: SharedProps<DateType>) {
   const suffix = locale && locale.year === '年' ? '年' : '';
   const options: { label: string; value: number }[] = [];
   for (let index = start; index < end; index++) {
-    options.push({ label: `${index}${suffix}`, value: index });
+    const oriLabel = `${index}${suffix}`;
+    options.push({
+      label: getYearLabel ? getYearLabel(oriLabel, index + 1) : oriLabel,
+      value: index,
+    });
   }
 
   return (
@@ -75,9 +89,22 @@ function YearSelect<DateType>(props: SharedProps<DateType>) {
   );
 }
 
-function MonthSelect<DateType>(props: SharedProps<DateType>) {
-  const { prefixCls, fullscreen, validRange, value, generateConfig, locale, onChange, divRef } =
-    props;
+function MonthSelect<DateType>(
+  props: SharedProps<DateType> & {
+    getMonthLabel?: (oriLabel: string, month: number, value: DateType) => string;
+  },
+) {
+  const {
+    prefixCls,
+    fullscreen,
+    validRange,
+    value,
+    generateConfig,
+    locale,
+    onChange,
+    divRef,
+    getMonthLabel,
+  } = props;
   const month = generateConfig.getMonth(value || generateConfig.getNow());
 
   let start = 0;
@@ -97,8 +124,9 @@ function MonthSelect<DateType>(props: SharedProps<DateType>) {
   const months = locale.shortMonths || generateConfig.locale.getShortMonths!(locale.locale);
   const options: { label: string; value: number }[] = [];
   for (let index = start; index <= end; index += 1) {
+    const oriLabel = months[index];
     options.push({
-      label: months[index],
+      label: getMonthLabel ? getMonthLabel(oriLabel, index, value) : oriLabel,
       value: index,
     });
   }
@@ -149,6 +177,8 @@ export interface CalendarHeaderProps<DateType> {
   fullscreen: boolean;
   onChange: (date: DateType, source: SelectInfo['source']) => void;
   onModeChange: (mode: CalendarMode) => void;
+  getYearLabel?: (oriLabel: string, year: number) => string;
+  getMonthLabel?: (oriLabel: string, month: number) => string;
 }
 function CalendarHeader<DateType>(props: CalendarHeaderProps<DateType>) {
   const { prefixCls, fullscreen, mode, onChange, onModeChange } = props;
