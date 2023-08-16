@@ -4,7 +4,7 @@ pipeline {
 
     tools {
 
-        nodejs 'v10.19.0'
+        nodejs 'node'
 
     }
 
