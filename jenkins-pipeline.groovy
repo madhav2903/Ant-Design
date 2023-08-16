@@ -33,7 +33,7 @@ pipeline {
        stage('SonarQube Analysis') {
 
             steps {
-               def scannerHome = tool 'SonarScanner';
+              
                sh "${scannerHome}/bin/sonar-scanner"
     }
   }
