@@ -29,19 +29,30 @@ pipeline {
             }
 
         }
-
-        stage('executeSonarqubeReport')
-
+      stage('SonarQube Analysis') 
+      {
+        
+    def scannerHome = tool 'SonarScanner';
+        
+    withSonarQubeEnv() 
         {
-
-            steps {
-
-                sh "npm install sonar-scanner"
-                sh "npm run sonar-scanner"
-
-            }
-
+          
+      sh "${scannerHome}/bin/sonar-scanner"
         }
+      }
+      
+        //stage('executeSonarqubeReport')
+
+       // {
+
+          //  steps {
+
+              //  sh "npm install sonar-scanner"
+              //  sh "npm run sonar-scanner"
+
+           // }
+
+      //  }
 
     }
 
