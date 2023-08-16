@@ -36,8 +36,8 @@ pipeline {
 
             steps {
 
-                sh "npm install sonarjs"
-                sh "npm run sonar"
+                sh "npm install sonar-scanner"
+                sh "npm run sonar-scanner"
 
             }
 
