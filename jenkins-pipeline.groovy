@@ -34,7 +34,7 @@ pipeline {
 
             steps {
               
-               sh "${scannerHome}/bin/sonar-scanner"
+               sh 'npm run sonar'
     }
   }
 
