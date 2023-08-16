@@ -36,7 +36,7 @@ pipeline {
 
             steps {
 
-                sh "npm run sonar"
+                sh "mvn sonar:sonar"
 
             }
 
